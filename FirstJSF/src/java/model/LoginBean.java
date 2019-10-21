@@ -1,8 +1,12 @@
 
 package model;
 
+import dao.UserDAO;
 import java.sql.SQLException;
-
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+@ManagedBean(name = "loginBean")
+@SessionScoped
 public class LoginBean {
      String uname,pass,msg;
 
@@ -30,6 +34,14 @@ public class LoginBean {
         this.msg = msg;
     }
     public String loginAction() throws SQLException{
-        
+        boolean result=UserDAO.login();
+        if(result){
+            return "home";
+        }else{
+            setMsg("Login Failed!!");
+            setUname("");
+            setPass("");
+            return "index";
+        }
     }
 }

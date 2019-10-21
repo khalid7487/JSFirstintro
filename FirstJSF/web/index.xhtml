@@ -19,9 +19,12 @@
                         <h:outputText value="Login"/>
                     </f:facet>
                     <h:outputLabel>User Name</h:outputLabel>
-                    <h:inputText id="un" value="#{}"/>
+                    <h:inputText id="un" value="#{loginBean.uname}"/>
                     <h:outputLabel>Password</h:outputLabel>
+                    <h:inputText id="pp" value="#{loginBean.pass}"/>
+                    <h:commandButton value="Login" action="#{loginBean.loginAction}"/>
                 </h:panelGrid>
+                <h:outputText value="#{loginBean.msg}"/>
             </h:form>
         </f:view>
     </h:body>

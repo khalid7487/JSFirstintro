@@ -13,10 +13,11 @@ public class UserDAO {
         Connection con=null;
         PreparedStatement ps=null;
         ResultSet rs=null;
+        System.out.println(login+password);
         try {
             con=Database.getConnection();
             ps=con.prepareStatement(
-            "select uname, password form users where uname=? and password=?");
+            "select user, password from user where user=? and password=? ");
             ps.setString(1, login);
             ps.setString(2, password);
             rs=ps.executeQuery();
@@ -26,7 +27,7 @@ public class UserDAO {
                 return false;
             }
         } catch (Exception e) {
-        e.printStackTrace();
+            System.out.println("Error login"+e.getMessage());
         return false;
         }finally{
           Database.close(con);

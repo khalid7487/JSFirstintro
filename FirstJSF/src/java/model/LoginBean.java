@@ -34,9 +34,11 @@ public class LoginBean {
         this.msg = msg;
     }
     public String loginAction() throws SQLException{
+        
         boolean result=UserDAO.login(uname, pass);
+        System.out.println(result);
         if(result){
-            return "home";
+            return "welcome";
         }else{
             setMsg("Login Failed!!");
             setUname("");
